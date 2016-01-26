@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+			 x:Class="XPrototype.ShopPage"
+			 Title="{Binding Title}" Icon="{Binding Icon}" IsBusy="{Binding IsBusy}">
+ 
+  <StackLayout
+    Orientation="Vertical">
+    <ListView x:Name="listView"
+              ItemsSource="{Binding Shops}"
+              HasUnevenRows="True"
+              IsPullToRefreshEnabled="True"
+              RefreshCommand="{Binding LoadItemsCommand}"
+              IsRefreshing="{Binding IsBusy, Mode=OneWay}">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <Grid Padding="10">
+              <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="100"/>
+              </Grid.RowDefinitions>
+              <StackLayout
+                           Spacing="4"
+                           VerticalOptions="Center">
+                <Label Text="{Binding ShopName}" FontSize="Small" LineBreakMode="WordWrap"/>
+                <Label Text="{Binding Desc}" TextColor="#3498DB" FontSize="Small" LineBreakMode="NoWrap"/>
+              </StackLayout>
+              
+              <Image Grid.Row="2" Source="{Binding ImageUrl}" Aspect="AspectFill"/>
+
+            </Grid>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  </StackLayout>
+</ContentPage>

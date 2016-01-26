@@ -1,0 +1,29 @@
+{
+  "siteName": {
+    "value": "xmock"
+  },
+  "hostingPlanName": {
+    "value": "xmock"
+  },
+  "siteLocation": {
+    "value": "Southeast Asia"
+  },
+  "sku": {
+    "value": "Free"
+  },
+  "workerSize": {
+    "value": "0"
+  },
+  "siteMode": {
+    "value": "Limited"
+  },
+  "computeMode": {
+    "value": "0"
+  },
+  "subscriptionId": {
+    "value": "b85090ff-1741-4695-9f98-c89ed802cfd7"
+  },
+  "resourceGroup": {
+    "value": "CS-SoutheastAsia-scheduler"
+  }
+}
