@@ -8,83 +8,15 @@ namespace XPrototype
 {
 	public partial class DetailPage : ContentPage
 	{
-		private const int MAX = 10;
-
 		public DetailPage (object detail)
 		{
 			InitializeComponent ();
 
-			var buttonGroupQuantityItems = new List<string>();
-
-			for (var i = 1; i <= MAX; i++)
-			{
-				buttonGroupQuantityItems.Add(i.ToString(CultureInfo.InvariantCulture));
-			}
-
-			var buttonGroupTagCloudItems = new List<string>
-			{
-				"Xamarin",
-				"Xamarin.Forms",
-				"iOS",
-				"Android",
-				"Windows Phone",
-			};
-
-			var buttonGroupMovieStartTimesItems = new List<string>
-			{
-				"12:00",
-				"2:30",
-				"5:00",
-				"7:30",
-			};
-
-			var buttonGroupQuantity = new ButtonGroup
-			{
-				IsNumber = true,
-				Rounded = true,
-				ViewBackgroundColor = Color.Black,
-				BorderColor = Color.White,
-				OutlineColor = Color.Black,
-				BackgroundColor = Device.OnPlatform(Color.Accent, Color.Accent, Color.White),
-				TextColor = Device.OnPlatform(Color.White, Color.White, Color.Black),
-				SelectedTextColor = Device.OnPlatform(Color.Black, Color.White, Color.White),
-				SelectedBackgroundColor = Device.OnPlatform(Color.White, Color.Black, Color.Black),
-				SelectedBorderColor = Device.OnPlatform(Color.White, Color.Silver, Color.Silver),
-				SelectedFrameBackgroundColor = Device.OnPlatform(Color.Black, Color.Black, Color.Black),
-				SelectedIndex = 3,
-				HorizontalOptions = LayoutOptions.FillAndExpand,
-				VerticalOptions = LayoutOptions.Center,
-				Padding = new Thickness(5),
-				Font = Device.OnPlatform(
-					Font.OfSize("HelveticaNeue-Light", NamedSize.Medium),
-					Font.OfSize("Roboto Light", NamedSize.Medium),
-					Font.OfSize("Segoe WP Light", NamedSize.Medium)),
-				Items = buttonGroupQuantityItems,
-			};
-
-			var buttonGroupTagCloud = new ButtonGroup
-			{
-				Rounded = false,
-				IsNumber = false,
-				ViewBackgroundColor = Color.White,
-				BorderColor = Color.White,
-				OutlineColor = Color.Black,
-				BackgroundColor = Device.OnPlatform(Color.Accent, Color.Accent, Color.White),
-				TextColor = Device.OnPlatform(Color.White, Color.Black, Color.Black),
-				SelectedTextColor = Device.OnPlatform(Color.Black, Color.White, Color.White),
-				SelectedBackgroundColor = Device.OnPlatform(Color.White, Color.Accent, Color.Accent),
-				SelectedBorderColor = Device.OnPlatform(Color.White, Color.Accent, Color.Accent),
-				SelectedFrameBackgroundColor = Device.OnPlatform(Color.White, Color.Accent, Color.Accent),
-				SelectedIndex = 3,
-				HorizontalOptions = LayoutOptions.FillAndExpand,
-				VerticalOptions = LayoutOptions.Center,
-				Padding = new Thickness(5),
-				Font = Device.OnPlatform(
-					Font.OfSize("HelveticaNeue-Light", NamedSize.Medium),
-					Font.OfSize("Roboto Light", NamedSize.Medium),
-					Font.OfSize("Segoe WP Light", NamedSize.Medium)),
-				Items = buttonGroupTagCloudItems,
-			};
+			var buttonGroupMovieStartTimesItems = new List<string>();
+		    for (var i = 9; i < 21; i++)
+		    {
+		        buttonGroupMovieStartTimesItems.Add(string.Format("{0}:00 - {1}:00", i, i+1));
+		    }
 
 			var buttonGroupMovieStartTimes = new ButtonGroup
 			{
@@ -110,23 +42,21 @@ namespace XPrototype
 				Items = buttonGroupMovieStartTimesItems,
 			};
 
-			var labelQuantity = new Label
-			{
-				Text = "Quantity",
-				TextColor = Device.OnPlatform(Color.White, Color.White, Color.White),
-			};
-
-			var labelTagCloud = new Label
-			{
-				Text = "Tag Cloud",
-				TextColor = Device.OnPlatform(Color.White, Color.White, Color.White),
-			};
-
 			var labelMovieStartTimes = new Label
 			{
-				Text = "Movie Start Times",
+				Text = "Service Time",
 				TextColor = Device.OnPlatform(Color.White, Color.White, Color.White),
 			};
+
+            var btnConfirm = new Button()
+            {
+                Text = "Confirm",
+                BackgroundColor = Color.Gray
+            };
+		    btnConfirm.Clicked += (s, e) =>
+		    {
+                DisplayAlert("To DO", "go to my orders page.", "OK");
+            };
 
 			var stack = new StackLayout
 			{
@@ -135,16 +65,13 @@ namespace XPrototype
 				HorizontalOptions = LayoutOptions.FillAndExpand,
 				Children =
 				{
-					labelQuantity,
-					buttonGroupQuantity, 
-					labelTagCloud,
-					buttonGroupTagCloud, 
 					labelMovieStartTimes,
 					buttonGroupMovieStartTimes,
+                    btnConfirm
 				},
 			};
 
-			Title = "Button Group";
+			Title = "Services";
 			BackgroundColor = Color.Black;
 			Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);
 			Content = stack;

@@ -65,8 +65,7 @@ namespace XPrototype
 				var responseString = string.Empty;
 				using (var httpClient = new HttpClient())
 				{
-					var url = "http://xmock.azurewebsites.net/XPrototype/GetShops";
-					responseString = await httpClient.GetStringAsync(url);
+					responseString = await httpClient.GetStringAsync(ServiceUrls.GetShops);
 				}
 
 				Shops.Clear();
@@ -84,7 +83,7 @@ namespace XPrototype
 			if (error)
 			{
 				var page = new ContentPage();
-				await page.DisplayAlert("Error", "Unable to load blog.", "OK");
+				await page.DisplayAlert("Error", "Unable to load shops.", "OK");
 
 			}
 

@@ -21,29 +21,40 @@ namespace XMock.Controllers
                 {
                     ShopName = "Shop A",
                     Desc = "sample",
-                    ImageUrl = "http://www.hanselman.com/images/photo-scott-tall.jpg"
+                    ImageUrl = "http://www.kissessweetspa.com/wp-content/uploads/2013/05/emerging-massage.jpg"
                 },
                 new AShop()
                 {
                     ShopName = "Shop B",
                     Desc = "sample",
-                    ImageUrl = "http://www.hanselman.com/images/photo-scott-tall.jpg"
+                    ImageUrl = "http://barcelonasalon-spa.com/wp-content/uploads/2012/12/spa5.jpg"
                 },
                 new AShop()
                 {
                     ShopName = "Shop C",
                     Desc = "sample",
-                    ImageUrl = "http://www.hanselman.com/images/photo-scott-tall.jpg"
+                    ImageUrl = "http://static1.squarespace.com/static/52291225e4b0af57b790b008/t/522b641fe4b04c838fabf7b1/1378575396909/spa-still-life.jpg"
                 },
                 new AShop()
                 {
                     ShopName = "Shop D",
                     Desc = "sample",
-                    ImageUrl = "http://www.hanselman.com/images/photo-scott-tall.jpg"
+                    ImageUrl = "http://static1.squarespace.com/static/52291225e4b0af57b790b008/t/522b641fe4b04c838fabf7b1/1378575396909/spa-still-life.jpg"
                 }
             };
 
             return Json(shops, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetTimeSlots()
+        {
+            var list = new List<string>();
+            for (var i = 9; i < 21; i++)
+            {
+                list.Add(string.Format("{0}:00 - {1}:00", i, i + 1));
+            }
+
+            return Json(list, JsonRequestBehavior.AllowGet);
         }
     }
 
