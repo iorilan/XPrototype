@@ -17,7 +17,7 @@ namespace XPrototype
 		        {
 		            Title = "Shops",
 		            IconSource = "shop.png",
-		            TargetType = typeof (ShopsPage)
+		            TargetType = typeof (MyShops)
 		        },
 		        new MasterPageItem
 		        {
@@ -30,13 +30,7 @@ namespace XPrototype
 		            Title = "My Orders",
 		            IconSource = "my_order.png",
 		            TargetType = typeof (MyOrderPage)
-		        },
-                new MasterPageItem
-                {
-                    Title = "Shop Page",
-                    IconSource = "home1.png",
-                    TargetType = typeof (ShopPage)
-                }
+		        }
             };
 
 		    MyListView.ItemsSource = masterPageItems;

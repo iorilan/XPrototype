@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
 			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-			 xmlns:local="clr-namespace:XPrototype;assembly=XPrototype"
+			 xmlns:models="clr-namespace:XPrototype.Models;assembly=XPrototype"
 			 x:Class="XPrototype.ShopsPage"
 			 Title="Shop Page">
 	<ContentPage.Padding>
@@ -13,7 +13,7 @@
 	        <RowDefinition Height="Auto"/>
 	        <RowDefinition Height="*" />
 	      </Grid.RowDefinitions>
-          <local:NativeListView Grid.Row="1" x:Name="nativeListView" ItemSelected="OnItemSelected" VerticalOptions="FillAndExpand" />
+          <models:NativeListView Grid.Row="1" x:Name="nativeListView" ItemSelected="OnItemSelected" VerticalOptions="FillAndExpand" />
 	    </Grid>
 	</ContentPage.Content>
 </ContentPage>

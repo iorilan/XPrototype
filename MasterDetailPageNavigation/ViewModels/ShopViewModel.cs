@@ -62,14 +62,15 @@ namespace XPrototype
 			var error = false;
 			try
 			{
-				var responseString = string.Empty;
-				using (var httpClient = new HttpClient())
-				{
-					responseString = await httpClient.GetStringAsync(ServiceUrls.GetShops);
-				}
+                //var responseString = string.Empty;
+                //using (var httpClient = new HttpClient())
+                //{
+                //	responseString = await httpClient.GetStringAsync(ServiceUrls.GetShops);
+                //}
+                //var items = JsonConvert.DeserializeObject<IList<Shop>>(responseString);
+			    var items = DummyService.GetShops();
 
-				Shops.Clear();
-				var items = JsonConvert.DeserializeObject<IList<Shop>>(responseString);
+                Shops.Clear();
 				foreach (var item in items)
 				{
 					Shops.Add(item);

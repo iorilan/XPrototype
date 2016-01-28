@@ -1,0 +1,21 @@
+﻿using System;
+using System.Collections.Generic;
+using Xamarin.Forms;
+
+namespace XPrototype
+{
+	public partial class ShopsPage : ContentPage
+	{
+		public ShopsPage()
+		{
+			InitializeComponent ();
+			nativeListView.Items = DataSource.GetList ();
+		}
+
+		async void OnItemSelected (object sender, SelectedItemChangedEventArgs e)
+		{
+			await Navigation.PushModalAsync (new DetailPage (e.SelectedItem));
+		}
+	}
+}
+

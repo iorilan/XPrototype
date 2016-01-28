@@ -1,15 +1,16 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
 			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-			 x:Class="XPrototype.ShopPage"
-			 Title="{Binding Title}" Icon="{Binding Icon}" IsBusy="{Binding IsBusy}">
- 
+			 x:Class="XPrototype.MyShops"
+			 Title="{Binding Title}"
+       Icon="{Binding Icon}" IsBusy="{Binding IsBusy}">
   <StackLayout
     Orientation="Vertical">
     <ListView x:Name="listView"
               ItemsSource="{Binding Shops}"
               HasUnevenRows="True"
               IsPullToRefreshEnabled="True"
+              ItemSelected="ListView_OnItemSelected"
               RefreshCommand="{Binding LoadItemsCommand}"
               IsRefreshing="{Binding IsBusy, Mode=OneWay}">
       <ListView.ItemTemplate>
@@ -27,7 +28,7 @@
                 <Label Text="{Binding ShopName}" FontSize="Small" LineBreakMode="WordWrap"/>
                 <Label Text="{Binding Desc}" TextColor="#3498DB" FontSize="Small" LineBreakMode="NoWrap"/>
               </StackLayout>
-              
+
               <Image Grid.Row="2" Source="{Binding ImageUrl}" Aspect="AspectFill"/>
 
             </Grid>
