@@ -7,6 +7,7 @@ using System.Web.Http;
 using System.Web.Http.Results;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
+using XMock.Models;
 
 namespace XMock.Controllers
 {
@@ -43,7 +44,7 @@ namespace XMock.Controllers
                 }
             };
 
-            return Json(shops, JsonRequestBehavior.AllowGet);
+            return Json(new AResult<IList<AShop>>(shops), JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult GetTimeSlots()
@@ -54,14 +55,36 @@ namespace XMock.Controllers
                 list.Add(string.Format("{0}:00 - {1}:00", i, i + 1));
             }
 
-            return Json(list, JsonRequestBehavior.AllowGet);
+            return Json(new AResult<IList<string>>(list), JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult BookService(string shopId, string shopName, string range)
+        {
+            var order = new AOrder(shopId, shopName, range);
+            MyOrders.List.Add(order);
+
+            return Json(new AResult(), JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetMyOrders()
+        {
+            return Json(new AResult<IList<AOrder>>(MyOrders.List), JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Login()
+        {
+            throw new NotImplementedException();
+        }
+
+        public ActionResult Logout()
+        {
+            throw new NotImplementedException();
+        }
+
     }
 
-    public class AShop
+    public static class MyOrders
     {
-        public string ShopName { get; set; }
-        public string Desc { get; set; }
-        public string ImageUrl { get; set; }
+        public static List<AOrder> List { get; set; }
     }
 }
