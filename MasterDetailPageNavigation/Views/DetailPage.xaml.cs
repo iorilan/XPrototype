@@ -13,9 +13,11 @@ namespace XPrototype
 			InitializeComponent ();
 
 			var buttonGroupMovieStartTimesItems = new List<string>();
-		    for (var i = 9; i < 21; i++)
+
+		    var slots = DummyService.GetTimeSlots();
+		    foreach (var slot in slots)
 		    {
-		        buttonGroupMovieStartTimesItems.Add(string.Format("{0}:00 - {1}:00", i, i+1));
+		        buttonGroupMovieStartTimesItems.Add(slot);
 		    }
 
 			var buttonGroupMovieStartTimes = new ButtonGroup
@@ -51,11 +53,11 @@ namespace XPrototype
             var btnConfirm = new Button()
             {
                 Text = "Confirm",
-                BackgroundColor = Color.Gray
+                BackgroundColor = Color.Green
             };
 		    btnConfirm.Clicked += (s, e) =>
 		    {
-                DisplayAlert("To DO", "go to my orders page.", "OK");
+                Navigation.PushModalAsync(new MyOrderPage());
             };
 
 			var stack = new StackLayout

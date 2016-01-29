@@ -35,8 +35,10 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="DummyService.cs" />
+    <Compile Include="Models\Order.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceUrls.cs" />
+    <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -110,7 +112,12 @@
       <HintPath>..\packages\Xamarin.Forms.2.0.1.6495\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Common.Enum\Common.Enum.csproj">
+      <Project>{2e5deba1-966c-4a2c-be48-2ec20f0d1a34}</Project>
+      <Name>Common.Enum</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <EmbeddedResource Include="Views\MyShops.xaml">

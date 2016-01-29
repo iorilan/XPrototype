@@ -1,18 +1,16 @@
 ﻿using Common.Enum;
 
-namespace XMock.Models
+namespace XPrototype.Models
 {
-    public class AOrder
+    public class Order
     {
-        public AOrder(string shopId, string shopName, string range)
+        public Order(string shopName, string range, OrderStatus status)
         {
-            ShopId = shopId;
             ShopName = shopName;
             TimeRange = range;
-            Status = OrderStatus.PendingConfirmation;
+            Status = status;
         }
 
-        public string ShopId { get; set; }
         public string ShopName { get; set; }
         public string TimeRange { get; set; }
         public OrderStatus Status { get; set; }

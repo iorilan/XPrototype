@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Common.Enum;
+using XPrototype.Models;
 
 namespace XPrototype
 {
@@ -40,5 +42,25 @@ namespace XPrototype
 
             return shops;
         }
+        
+        public static List<string> GetTimeSlots()
+        {
+            var list = new List<string>();
+            for (var i = 9; i < 21; i++)
+            {
+                list.Add(string.Format("{0}:00 - {1}:00", i, i + 1));
+            }
+
+            return list;
+        }
+
+        public static List<Order> GetOrders()
+        {
+            var list = new List<Order>();
+
+            list.Add(new Order("", "", OrderStatus.PendingConfirmation));
+
+            return list;
+        } 
     }
 }

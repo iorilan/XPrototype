@@ -7,39 +7,39 @@ using System.Net.Http;
 using System.Xml.Linq;
 using Newtonsoft.Json;
 using Xamarin.Forms;
+using XPrototype.Models;
 
 namespace XPrototype
 {
-	public class ShopViewModel : BaseViewModel
+	public class OrderViewModel : BaseViewModel
 	{
-		public ShopViewModel()
+		public OrderViewModel()
 		{
-			Title = "Shops";
-			Icon = "home1.png";
+			Title = "My Orders";
 		}
 
 
-		private ObservableCollection<Shop> shops = new ObservableCollection<Shop>();
+		private ObservableCollection<Order> orders = new ObservableCollection<Order>();
 
 		/// <summary>
 		/// gets or sets the feed items
 		/// </summary>
-		public ObservableCollection<Shop> Shops
+		public ObservableCollection<Order> Orders
 		{
-			get { return shops; }
-			set { shops = value; OnPropertyChanged(); }
+			get { return orders; }
+			set { orders = value; OnPropertyChanged(); }
 		}
 
-		private Shop _selectedShop;
+		private Order _selectedOrder;
 		/// <summary>
 		/// Gets or sets the selected feed item
 		/// </summary>
-		public Shop SelectedShop
+		public Order SelectedOrder
 		{
-			get { return _selectedShop; }
+			get { return _selectedOrder; }
 			set
 			{
-				_selectedShop = value;
+				_selectedOrder = value;
 				OnPropertyChanged();
 			}
 		}
@@ -55,8 +55,10 @@ namespace XPrototype
 
 		private async Task ExecuteLoadItemsCommand()
 		{
-			if (IsBusy)
-				return;
+		    if (IsBusy)
+		    {
+                return;
+            }
 
 			IsBusy = true;
 			var error = false;
@@ -68,12 +70,12 @@ namespace XPrototype
                 //	responseString = await httpClient.GetStringAsync(ServiceUrls.GetShops);
                 //}
                 //var items = JsonConvert.DeserializeObject<IList<Shop>>(responseString);
-			    var items = DummyService.GetShops();
+			    var items = DummyService.GetOrders();
 
-                Shops.Clear();
+                Orders.Clear();
 				foreach (var item in items)
 				{
-					Shops.Add(item);
+                    Orders.Add(item);
 				}
 			}
 			catch
@@ -84,7 +86,7 @@ namespace XPrototype
 			if (error)
 			{
 				var page = new ContentPage();
-				await page.DisplayAlert("Error", "Unable to load shops.", "OK");
+				await page.DisplayAlert("Error", "Unable to load orders.", "OK");
 
 			}
 
