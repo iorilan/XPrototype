@@ -22,14 +22,13 @@
                 <RowDefinition Height="10"/>
                 <RowDefinition Height="100"/>
               </Grid.RowDefinitions>
-              <StackLayout
-                           Spacing="4"
-                           VerticalOptions="Center">
+              <StackLayout Orientation="Horizontal">
+                <Image Source="{Binding ImageUrl}" />
                 <Label Text="{Binding ShopName}" FontSize="Small" LineBreakMode="WordWrap"/>
                 <Label Text="{Binding Desc}" TextColor="#3498DB" FontSize="Small" LineBreakMode="NoWrap"/>
               </StackLayout>
 
-              <Image Grid.Row="2" Source="{Binding ImageUrl}" Aspect="AspectFill"/>
+              <!--<Image Grid.Row="2" Source="{Binding ImageUrl}" Aspect="AspectFill"/>-->
 
             </Grid>
           </ViewCell>

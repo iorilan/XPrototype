@@ -2,7 +2,7 @@
 <MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms" 
 				  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 				  xmlns:local="clr-namespace:XPrototype;assembly=XPrototype"
-				  x:Class="XPrototype.MainPage"
+				  x:Class="XPrototype.MainPagewithMyOrder"
           >
   <MasterDetailPage.Master>
   	<local:MasterPage x:Name="MyMasterPage" />
@@ -10,7 +10,7 @@
 	<MasterDetailPage.Detail>
 		<NavigationPage>
 			<x:Arguments>
-        <local:Shop />
+        <local:MyOrderPage />
 			</x:Arguments>
 		</NavigationPage>
 	</MasterDetailPage.Detail>

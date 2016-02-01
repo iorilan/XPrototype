@@ -57,7 +57,9 @@ namespace XPrototype
             };
 		    btnConfirm.Clicked += (s, e) =>
 		    {
-                Navigation.PushModalAsync(new MyOrderPage());
+                DisplayAlert("Message", "booked successfully.", "OK");
+
+                Navigation.PushModalAsync(new MainPagewithMyOrder());
             };
 
 			var stack = new StackLayout

@@ -11,6 +11,8 @@ XMock/obj/
 XMock/bin/
 XMock.Test/obj/
 XMock.Test/bin/
+Common.Enum/obj/
+Common.Enum/bin/
 Droid/bin/Release/
 Droid/obj/Release/
 IOS/bin/Release/
@@ -23,6 +25,7 @@ XMock/obj/Release/
 XMock/bin/Release/
 XMock.Test/obj/Release/
 XMock.Test/bin/Release/
-
+Common.Enum/obj/Release/
+Common.Enum/bin/Release/
 Screenshots/
 *.htm

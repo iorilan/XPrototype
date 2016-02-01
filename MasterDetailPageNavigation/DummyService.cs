@@ -58,8 +58,9 @@ namespace XPrototype
         {
             var list = new List<Order>();
 
-            list.Add(new Order("", "", OrderStatus.PendingConfirmation));
-
+            list.Add(new Order("SPA", "11:00 - 12:00", OrderStatus.PendingConfirmation));
+            list.Add(new Order("Masage", "14:00 - 17:00", OrderStatus.Completed));
+            list.Add(new Order("SPA", "9:00 - 13:00", OrderStatus.Completed));
             return list;
         } 
     }

@@ -3,9 +3,9 @@ using Xamarin.Forms;
 
 namespace XPrototype
 {
-	public partial class MainPage : MasterDetailPage
+	public partial class MainPagewithMyOrder : MasterDetailPage
 	{
-		public MainPage ()
+		public MainPagewithMyOrder()
 		{
 			InitializeComponent ();
 
