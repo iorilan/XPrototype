@@ -9,11 +9,6 @@ namespace XPrototype
 		{
 			InitializeComponent ();
 
-		    if (Detail == null)
-		    {
-		        Detail = new MyShops();
-		    }
-
             MyMasterPage.ListView.ItemSelected += OnItemSelected;
 		}
 

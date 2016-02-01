@@ -4,6 +4,7 @@ using System.Linq;
 
 using Foundation;
 using UIKit;
+using XPrototype;
 
 namespace MasterDetailPageNavigation.iOS
 {

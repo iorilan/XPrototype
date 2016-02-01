@@ -18,7 +18,7 @@ using Windows.UI.Xaml.Navigation;
 
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
 
-namespace MasterDetailPageNavigation.WinPhone81
+namespace XPrototype.WinPhone81
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
