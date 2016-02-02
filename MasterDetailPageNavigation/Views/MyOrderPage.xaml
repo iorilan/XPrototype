@@ -11,22 +11,22 @@
               ItemsSource="{Binding Orders}"
               HasUnevenRows="True"
               IsPullToRefreshEnabled="True"
-              ItemSelected="ListView_OnItemSelected"
               RefreshCommand="{Binding LoadItemsCommand}"
               IsRefreshing="{Binding IsBusy, Mode=OneWay}">
       <ListView.ItemTemplate>
         <DataTemplate>
           <ViewCell>
-            <Grid Padding="10">
+            <Grid >
               <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="10"/>
-                <RowDefinition Height="100"/>
+                <RowDefinition Height="10"/>
               </Grid.RowDefinitions>
               <StackLayout Orientation="Horizontal">
                 <Label Text="{Binding ShopName}" FontSize="Small" LineBreakMode="WordWrap"/>
-                <Label Text="{Binding Status}" FontSize="Small" LineBreakMode="WordWrap"/>
                 <Label Text="{Binding TimeRange}" TextColor="#3498DB" FontSize="Small" LineBreakMode="NoWrap"/>
+                <Label Text="{Binding Status}" FontSize="Small" LineBreakMode="WordWrap"/>
+                <Button x:Name="btnReorder" Text="Reorder" Clicked="BtnReorder_OnClicked" BackgroundColor="Green"></Button>
               </StackLayout>
             </Grid>
           </ViewCell>

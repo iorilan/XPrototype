@@ -17,25 +17,25 @@ namespace XPrototype
                 new Shop()
                 {
                     ShopName = "Shop A",
-                    Desc = "sample",
+                    Desc = "",
                     ImageUrl = "home1.png"
                 },
                 new Shop()
                 {
                     ShopName = "Shop B",
-                    Desc = "sample",
+                    Desc = "",
                     ImageUrl = "home2.png"
                 },
                 new Shop()
                 {
                     ShopName = "Shop C",
-                    Desc = "sample",
+                    Desc = "",
                     ImageUrl = "home3.png"
                 },
                 new Shop()
                 {
                     ShopName = "Shop D",
-                    Desc = "sample",
+                    Desc = "",
                     ImageUrl = "home4.png"
                 }
             };

@@ -3,83 +3,81 @@ using System.Collections.Generic;
 
 using Xamarin.Forms;
 using System.Globalization;
+using System.Linq;
 
 namespace XPrototype
 {
-	public partial class DetailPage : ContentPage
-	{
-		public DetailPage (object detail)
-		{
-			InitializeComponent ();
+    public partial class DetailPage : ContentPage
+    {
+        private const string ConfirmBtnStr = "Confirm";
 
-			var buttonGroupMovieStartTimesItems = new List<string>();
+        public DetailPage(object detail)
+        {
+            InitializeComponent();
 
-		    var slots = DummyService.GetTimeSlots();
-		    foreach (var slot in slots)
-		    {
-		        buttonGroupMovieStartTimesItems.Add(slot);
-		    }
+            Title = "Services";
+            BackgroundColor = Color.Black;
 
-			var buttonGroupMovieStartTimes = new ButtonGroup
-			{
-				Rounded = true,
-				IsNumber = false,
-				ViewBackgroundColor = Color.Black,
-				BackgroundColor = Color.Silver,
-				TextColor = Color.White,
-				BorderColor = Color.White,
-				OutlineColor = Color.Black,
-				SelectedBackgroundColor = Color.Silver,
-				SelectedTextColor = Color.Black,
-				SelectedBorderColor = Color.Black,
-				SelectedFrameBackgroundColor = Device.OnPlatform(Color.Black, Color.Black, Color.Black),
-				SelectedIndex = 3,
-				HorizontalOptions = LayoutOptions.FillAndExpand,
-				VerticalOptions = LayoutOptions.Center,
-				Padding = new Thickness(5),
-				Font = Device.OnPlatform(
-					Font.OfSize("HelveticaNeue-Light", NamedSize.Medium),
-					Font.OfSize("Roboto Light", NamedSize.Medium),
-					Font.OfSize("Segoe WP Light", NamedSize.Medium)),
-				Items = buttonGroupMovieStartTimesItems,
-			};
+            var slots = DummyService.GetTimeSlots();
+            foreach (var slot in slots)
+            {
+                var btn = new Button();
+                btn.Text = slot;
+                btn.BackgroundColor = Color.Gray;
+                btn.TextColor = Color.White;
 
-			var labelMovieStartTimes = new Label
-			{
-				Text = "Service Time",
-				TextColor = Device.OnPlatform(Color.White, Color.White, Color.White),
-			};
+                btn.Clicked += (sender, args) =>
+                {
+
+                    foreach (var ctl in myStackLayout.Children)
+                    {
+                        var b = ctl as Button;
+                        if (b != null && b.Text != ConfirmBtnStr)
+                        {
+                            ctl.BackgroundColor = Color.Gray;
+                        }
+
+                        btn.BackgroundColor = Color.Green;
+                    }
+                };
+                myStackLayout.Children.Add(btn);
+            }
 
             var btnConfirm = new Button()
             {
-                Text = "Confirm",
+                Text = ConfirmBtnStr,
                 BackgroundColor = Color.Green
             };
-		    btnConfirm.Clicked += (s, e) =>
-		    {
-                DisplayAlert("Message", "booked successfully.", "OK");
+            btnConfirm.Clicked += (s, e) =>
+            {
+                if (string.IsNullOrWhiteSpace(SelectedRange()))
+                {
+                    DisplayAlert("Message", "Please selecte a service.", "OK");
+                    return;
+                }
 
+                //TODO : insert order record here
+
+                DisplayAlert("Message", "booked successfully.", "OK");
                 Navigation.PushModalAsync(new MainPagewithMyOrder());
             };
+            myStackLayout.Children.Add(btnConfirm);
 
-			var stack = new StackLayout
-			{
-				Orientation = StackOrientation.Vertical,
-				VerticalOptions = LayoutOptions.StartAndExpand,
-				HorizontalOptions = LayoutOptions.FillAndExpand,
-				Children =
-				{
-					labelMovieStartTimes,
-					buttonGroupMovieStartTimes,
-                    btnConfirm
-				},
-			};
+        }
 
-			Title = "Services";
-			BackgroundColor = Color.Black;
-			Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);
-			Content = stack;
-		}
-	}
+        private string SelectedRange()
+        {
+            foreach (var child in myStackLayout.Children)
+            {
+                var btn = child as Button;
+                if (btn != null && btn.Text != ConfirmBtnStr && btn.BackgroundColor == Color.Green)
+                {
+                    return btn.Text;
+                }
+            }
+
+            return null;
+        }
+    }
 }
 

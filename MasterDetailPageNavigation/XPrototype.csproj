@@ -61,7 +61,6 @@
     <Compile Include="Views\DetailPage.xaml.cs">
       <DependentUpon>DetailPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\ButtonGroup.cs" />
     <Compile Include="Models\WrapLayout.cs" />
     <Compile Include="ViewModels\ShopViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
